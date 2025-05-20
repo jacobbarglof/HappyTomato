@@ -70,7 +70,7 @@ HappyTomato V1 is a microcontroller-based personal productivity assistant built 
 
 ---
 
-## 🧰 Hardware Overview
+##  Hardware Overview
 
 | Component            | Description                         |
 | -------------------- | ----------------------------------- |
@@ -90,7 +90,7 @@ HappyTomato V1 is a microcontroller-based personal productivity assistant built 
 
 ---
 
-## ▶️ Usage Instructions
+## ▶ Usage Instructions
 
 1. **Power the device** via USB or battery.
 2. **Navigate Menu**:
@@ -109,7 +109,7 @@ OLED screen displays the current status and timers.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 happytomato-v1/
@@ -126,31 +126,31 @@ happytomato-v1/
 
 ---
 
-## 👋 Feature Details
+##  Feature Details
 
-### ✅ Pomodoro
+###  Pomodoro
 
 * 25 minutes work + 5 minutes break cycle
 * Flashing OLED or buzz alert on transitions
 * Goal: 4 cycles/day for peak productivity
 
-### ✅ Stopwatch
+###  Stopwatch
 
 * Precision-timed using millis()
 * Press to start/stop
 * Long press to reset
 
-### ✅ Breathing
+### Breathing
 
 * Visual breathing guide (e.g. "Inhale... Exhale...")
 * Optional vibration feedback (future)
 
-### ✅ Progress Timer
+###  Progress Timer
 
 * Choose task length (e.g., 10, 20, 45 min)
 * Countdown display
 
-### 💤 Power Nap
+###  Power Nap
 
 * 20 min default nap countdown
 * Alert planned via piezo or screen flashing
