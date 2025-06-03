@@ -21,9 +21,16 @@ void Settings::update() {
     return;
   }
 
+  int scroll = input.getScrollAmount();
   int pot = analogRead(39);
   if (mode == MENU) {
-    selection = map(pot, 0, 4095, 0, 2);
+    if (scroll != 0) {
+      int prev = selection;
+      selection += scroll;
+      if (selection < 0) selection = 0;
+      if (selection > 2) selection = 2;
+      if (selection != prev && !muted) buzzer.click();
+    }
     if (input.singleClicked()) {
       if (selection == 0) {
         muted = !muted;
@@ -46,7 +53,11 @@ void Settings::update() {
       if (!muted) buzzer.click();
     }
   } else if (mode == INSTRUCTIONS) {
-    scrollLine = map(pot, 0, 4095, 0, 4);
+    if (scroll != 0) {
+      scrollLine += scroll;
+      if (scrollLine < 0) scrollLine = 0;
+      if (scrollLine > 4) scrollLine = 4;
+    }
   }
 }
 
@@ -83,11 +94,11 @@ void Settings::drawInstructions(DisplayManager& display) {
   const char* lines[] = {
     "Scroll to select",
     "Click to enter mode",
-    "Double click to exit",
+    "Hold button to exit",
     "Set timer with pot",
     "Breathe with rhythm"
   };
 
   display.drawText(lines[scrollLine], 0, 30);
-  display.drawText("Double-click to exit", 0, 55);
+  display.drawText("Hold to exit", 0, 55);
 }
