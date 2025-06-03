@@ -3,10 +3,12 @@
 #include "hardware/Buzzer.h"
 
 
-boolean isMuted = false; // Mute state
+// Track mute state for the buzzer.  Stored per-instance so multiple buzzers can
+// coexist without interfering with each other.
 void Buzzer::begin() {
   pinMode(buzzerPin, OUTPUT);
   digitalWrite(buzzerPin, LOW);
+  isMuted = false; // ensure starting with sound enabled
 }
 
 void Buzzer::click() {
