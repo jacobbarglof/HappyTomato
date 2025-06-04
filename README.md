@@ -190,7 +190,7 @@ lib_deps =
 
 ## To-Do / Future Work
 
-* [ ] Better visuals and integrate the sprite
+* [x] Better visuals and integrate the sprite
 * [ ] Add more features to the apps
 * [ ] Have an online app library
 * [ ] Build an enclosure or a PCB
