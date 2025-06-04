@@ -1,12 +1,7 @@
 #include "features/Pomodoro.h"
-#include "hardware/InputManager.h"
-#include "hardware/Buzzer.h"
-#include "ui/TomatoSprite.h"
+#include "globals.h"
 #include "ui/Menu.h"
 
-extern InputManager input;
-extern Buzzer buzzer;
-extern TomatoSprite sprite;
 extern Menu menu;
 
 Pomodoro::Pomodoro() {
@@ -130,7 +125,22 @@ void Pomodoro::update() {
 
 void Pomodoro::draw(DisplayManager& display) {
   char buf[16];
-  //sprite.drawIdle(display, 90, 0);
+
+  // Show companion sprite in top-right corner
+  switch (state) {
+    case FINISHED:
+      sprite.drawCheer(display, 90, 0);
+      break;
+    case PAUSED:
+      sprite.drawSad(display, 90, 0);
+      break;
+    case RUNNING_BREAK:
+      sprite.drawWink(display, 90, 0);
+      break;
+    default:
+      sprite.drawIdle(display, 90, 0);
+      break;
+  }
 
   switch (state) {
     case SELECTING_WORK:

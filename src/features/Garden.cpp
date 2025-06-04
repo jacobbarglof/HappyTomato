@@ -1,11 +1,8 @@
 // Garden.cpp - Tracks tomato growth based on completed focus sessions
 
 #include "features/Garden.h"
-#include "hardware/InputManager.h"
-#include "ui/TomatoSprite.h"
+#include "globals.h"
 
-extern InputManager input;
-extern TomatoSprite sprite;
 
 Garden::Garden() {
   stage = 0;
@@ -37,6 +34,12 @@ void Garden::update() {
 
 void Garden::draw(DisplayManager& display) {
   display.drawText("My Garden", 30, 0);
+
+  if (stage >= 4) {
+    sprite.drawCheer(display, 90, 0);
+  } else {
+    sprite.drawIdle(display, 90, 0);
+  }
 
   // moving clouds
   display.drawText("~~~", cloud1X, 10);

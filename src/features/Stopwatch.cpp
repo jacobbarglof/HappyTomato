@@ -1,13 +1,9 @@
 // Stopwatch.cpp - Stopwatch logic for HappyTomato
 
 #include "features/Stopwatch.h"
-#include "hardware/InputManager.h"
-#include "hardware/Buzzer.h"
+#include "globals.h"
 #include "hardware/DisplayManager.h"
 
-extern InputManager input;
-extern Buzzer buzzer;
-extern DisplayManager display;
 
 Stopwatch::Stopwatch() {
   running = false;
@@ -38,6 +34,12 @@ void Stopwatch::update() {
 
 void Stopwatch::draw(DisplayManager& display) {
   display.drawText("Stopwatch", 30, 0);
+
+  if (running) {
+    sprite.drawWink(display, 90, 0);
+  } else {
+    sprite.drawIdle(display, 90, 0);
+  }
 
   unsigned long displayMillis = running ? (millis() - startMillis + elapsedMillis) : elapsedMillis;
   int sec = (displayMillis / 1000) % 60;

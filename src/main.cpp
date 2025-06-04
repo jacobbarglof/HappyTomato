@@ -23,11 +23,11 @@ void setup() {
   buzzer.begin();
 
   display.clear();
-  display.drawText("HappyTomato V1.0", 0, 5, 1);
-  display.drawText("Made with love <3", 0, 40, 1);
-  delay(1500);
+  display.drawText("Let's Focus!", 20, 0, 1);
+  sprite.drawCheer(display, 0, 0);
+  display.drawText("happytomato", 28, 56, 1);
   display.update();
-  delay(1000);
+  delay(1500);
 
   menu.begin();
 }

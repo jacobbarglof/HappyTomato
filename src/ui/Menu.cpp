@@ -1,9 +1,8 @@
 // Menu.cpp - Scrollable feature menu for HappyTomato
 
 #include "ui/Menu.h"
-#include "hardware/Buzzer.h"
+#include "globals.h"
 
-extern Buzzer buzzer;
 
 void Menu::begin() {
   currentSelection = 0;
@@ -29,6 +28,8 @@ void Menu::update(int scrollAmount) {
 }
 
 void Menu::draw(DisplayManager& display) {
+  sprite.drawIdle(display, 90, 0);
+
   const int lineHeight = 10;
   const int maxVisible = 5;
   int start = currentSelection - 2;
