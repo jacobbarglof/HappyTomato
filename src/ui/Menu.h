@@ -20,6 +20,7 @@ public:
   void draw(DisplayManager& display);
   Feature* selectCurrentFeature();
   Feature* trySelectNow(bool buttonPressed); // NEW: immediately return a feature if button is pressed
+  Garden& getGarden();
 
 private:
   static const int NUM_OPTIONS = 7;

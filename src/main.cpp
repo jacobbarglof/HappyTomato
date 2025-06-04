@@ -45,7 +45,7 @@ void loop() {
     display.update();
 
     //  Allow returning to menu
-    if (input.doubleClicked()) {
+    if (input.longPressed()) {
       activeFeature = nullptr;
       buzzer.click();
     }

@@ -14,6 +14,7 @@ public:
   bool isButtonPressed();      // Instantaneous read of the button state
   bool singleClicked();        // True once on press edge
   bool doubleClicked();        // True if double click detected
+  bool longPressed();          // True if button held
 
 private:
   const int potPin = 39;
@@ -26,7 +27,10 @@ private:
   bool lastButtonState = true;
   bool singleClickFlag = false;
   bool doubleClickFlag = false;
+  bool longPressFlag = false;
   unsigned long lastClickTime = 0;
+  unsigned long pressStartTime = 0;
+  const unsigned long longPressDuration = 1500; // ms
 };
 
 #endif

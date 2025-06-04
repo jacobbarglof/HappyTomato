@@ -21,9 +21,20 @@ void Settings::update() {
     return;
   }
 
+  static unsigned long lastScrollTime = 0;
+  const unsigned long scrollCooldown = 20; // match main menu rate
+
+  int scroll = input.getScrollAmount();
   int pot = analogRead(39);
   if (mode == MENU) {
-    selection = map(pot, 0, 4095, 0, 2);
+    if (scroll != 0 && millis() - lastScrollTime > scrollCooldown) {
+      int prev = selection;
+      selection += scroll;
+      if (selection < 0) selection = 0;
+      if (selection > 2) selection = 2;
+      if (selection != prev && !muted) buzzer.click();
+      lastScrollTime = millis();
+    }
     if (input.singleClicked()) {
       if (selection == 0) {
         muted = !muted;
@@ -46,7 +57,12 @@ void Settings::update() {
       if (!muted) buzzer.click();
     }
   } else if (mode == INSTRUCTIONS) {
-    scrollLine = map(pot, 0, 4095, 0, 4);
+    if (scroll != 0 && millis() - lastScrollTime > scrollCooldown) {
+      scrollLine += scroll;
+      if (scrollLine < 0) scrollLine = 0;
+      if (scrollLine > 4) scrollLine = 4;
+      lastScrollTime = millis();
+    }
   }
 }
 
@@ -83,11 +99,11 @@ void Settings::drawInstructions(DisplayManager& display) {
   const char* lines[] = {
     "Scroll to select",
     "Click to enter mode",
-    "Double click to exit",
+    "Hold button to exit",
     "Set timer with pot",
     "Breathe with rhythm"
   };
 
   display.drawText(lines[scrollLine], 0, 30);
-  display.drawText("Double-click to exit", 0, 55);
+  display.drawText("Hold to exit", 0, 55);
 }

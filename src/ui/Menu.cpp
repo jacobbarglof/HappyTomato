@@ -61,3 +61,7 @@ Feature* Menu::selectCurrentFeature() {
     default: return nullptr;
   }
 }
+
+Garden& Menu::getGarden() {
+  return garden;
+}

@@ -80,10 +80,10 @@ void Pong::draw(DisplayManager& display) {
   if (gameOver) {
     if (playerScore >= 5) {
       display.drawText("You Win!", 35, 25);
-      sprite.drawCheer(display, 100, 0);
+      sprite.drawCheer(display, 50, -16);
     } else {
       display.drawText("You Lose!", 35, 25);
-      sprite.drawSad(display, 100, 0);
+      sprite.drawSad(display, 50, -16);
     }
     display.drawText("Double-click to retry", 0, 55);
     return;

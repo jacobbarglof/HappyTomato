@@ -8,10 +8,16 @@ public:
   Garden();
   void update() override;
   void draw(DisplayManager& display) override;
-  void addTomato();
+  void addTomato();  // Increase plant growth stage
 
 private:
-  int tomatoes;
+  int stage;
+  int cloud1X;
+  int cloud2X;
+  int swayOffset;
+  int swayDir;
+  unsigned long lastCloudMove;
+  unsigned long lastSway;
 };
 
 #endif

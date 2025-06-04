@@ -2,10 +2,12 @@
 #include "hardware/InputManager.h"
 #include "hardware/Buzzer.h"
 #include "ui/TomatoSprite.h"
+#include "ui/Menu.h"
 
 extern InputManager input;
 extern Buzzer buzzer;
 extern TomatoSprite sprite;
+extern Menu menu;
 
 Pomodoro::Pomodoro() {
   state = SELECTING_WORK;
@@ -80,6 +82,7 @@ void Pomodoro::update() {
         } else {
           state = FINISHED;
           buzzer.click();
+          menu.getGarden().addTomato();
         }
       }
       break;
