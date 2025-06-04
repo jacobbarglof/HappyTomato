@@ -23,16 +23,32 @@ void InputManager::update() {
 
   singleClickFlag = false;
   doubleClickFlag = false;
+  longPressFlag = false;
 
-  if (!lastButtonState && currentState) { // Rising edge: button just pressed
-    unsigned long now = millis();
-    if (now - lastClickTime < 400) {
-      doubleClickFlag = true;
-      lastClickTime = 0; // reset
+  unsigned long now = millis();
+
+  if (currentState && !lastButtonState) {
+    pressStartTime = now; // button pressed
+  }
+
+  if (!currentState && lastButtonState) { // released
+    unsigned long duration = now - pressStartTime;
+    if (duration >= longPressDuration) {
+      longPressFlag = true;
+      lastClickTime = 0;
     } else {
-      singleClickFlag = true;
-      lastClickTime = now;
+      if (now - lastClickTime < 400) {
+        doubleClickFlag = true;
+        lastClickTime = 0;
+      } else {
+        singleClickFlag = true;
+        lastClickTime = now;
+      }
     }
+    pressStartTime = 0;
+  } else if (currentState && (now - pressStartTime >= longPressDuration)) {
+    longPressFlag = true;
+    lastClickTime = 0;
   }
 
   lastButtonState = currentState;
@@ -52,4 +68,8 @@ bool InputManager::singleClicked() {
 
 bool InputManager::doubleClicked() {
   return doubleClickFlag;
+}
+
+bool InputManager::longPressed() {
+  return longPressFlag;
 }
