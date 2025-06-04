@@ -1,11 +1,6 @@
 #include "features/Pong.h"
-#include "hardware/InputManager.h"
-#include "hardware/Buzzer.h"
-#include "ui/TomatoSprite.h"
+#include "globals.h"
 
-extern InputManager input;
-extern Buzzer buzzer;
-extern TomatoSprite sprite;
 
 Pong::Pong() {
   resetGame();

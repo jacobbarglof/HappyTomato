@@ -1,13 +1,9 @@
 // Settings.cpp - Menu and configuration UI for HappyTomato
 
 #include "features/Settings.h"
-#include "hardware/InputManager.h"
-#include "hardware/Buzzer.h"
+#include "globals.h"
 #include "hardware/DisplayManager.h"
 
-extern DisplayManager display;
-extern InputManager input;
-extern Buzzer buzzer;
 
 Settings::Settings() {
   mode = MENU;
@@ -71,6 +67,12 @@ void Settings::update() {
 }
 
 void Settings::draw(DisplayManager& display) {
+  if (mode == INSTRUCTIONS) {
+    sprite.drawWink(display, 90, 0);
+  } else {
+    sprite.drawIdle(display, 90, 0);
+  }
+
   if (mode == MENU) {
     drawMenu(display);
   } else if (mode == BRIGHTNESS) {

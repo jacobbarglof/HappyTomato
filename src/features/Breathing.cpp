@@ -1,9 +1,6 @@
 #include "features/Breathing.h"
-#include "hardware/InputManager.h"
-#include "hardware/Buzzer.h"
+#include "globals.h"
 
-extern InputManager input;
-extern Buzzer buzzer;
 
 Breathing::Breathing() {
   reset();
@@ -76,6 +73,14 @@ void Breathing::update() {
 }
 
 void Breathing::draw(DisplayManager& display) {
+  if (state == COMPLETE) {
+    sprite.drawCheer(display, 90, 0);
+  } else if (state == RUNNING) {
+    sprite.drawWink(display, 90, 0);
+  } else {
+    sprite.drawIdle(display, 90, 0);
+  }
+
   switch (state) {
     case SELECT_METHOD:
       drawMenu(display);

@@ -1,11 +1,8 @@
 // PowerNap.cpp - Nap timer feature logic
 
 #include "features/PowerNap.h"
-#include "hardware/InputManager.h"
-#include "hardware/Buzzer.h"
+#include "globals.h"
 
-extern InputManager input;
-extern Buzzer buzzer;
 
 PowerNap::PowerNap() {
   state = SELECTING;
@@ -37,6 +34,14 @@ void PowerNap::update() {
 
 void PowerNap::draw(DisplayManager& display) {
   display.drawText("Power Nap", 30, 0);
+
+  if (state == DONE) {
+    sprite.drawCheer(display, 90, 0);
+  } else if (state == NAPPING) {
+    sprite.drawWink(display, 90, 0);
+  } else {
+    sprite.drawIdle(display, 90, 0);
+  }
 
   if (state == SELECTING) {
     display.drawText("Set: ", 10, 20);
