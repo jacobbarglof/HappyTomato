@@ -30,7 +30,7 @@ private:
   bool longPressFlag = false;
   unsigned long lastClickTime = 0;
   unsigned long pressStartTime = 0;
-  const unsigned long longPressDuration = 1500; // ms
-};
+  const unsigned long longPressDuration = 400; // ms
+
 
 #endif

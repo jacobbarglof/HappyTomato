@@ -17,6 +17,7 @@ HappyTomato V1 is a microcontroller-based personal productivity assistant built 
 * **Progress Timer** – A countdown with adjustable duration for general tasks.
 * **Breathing Mode** – Guided inhale-exhale prompts for stress reduction.
 * **Power Nap** – Short-timed naps with optional vibration/alarm support (future update).
+* **Garden** – Grow a tomato plant as you complete Pomodoro cycles.
 * **Rotary Encoder Interface** – Scroll/select intuitive tactile control.
 * **OLED UI** – Clear, pixelated display menu and feedback using SSD1306.
 * **Modular Design** – Easily extendable for new features like habit tracking, hydration reminders, and more.
@@ -154,6 +155,11 @@ happytomato-v1/
 
 * 20 min default nap countdown
 * Alert planned via piezo or screen flashing
+
+### Garden
+
+* Plant grows a bit after each completed Pomodoro
+* Moving clouds and gentle sway animations
 
 ---
 
