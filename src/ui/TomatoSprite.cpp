@@ -6,7 +6,7 @@
 #define TY(v) (dy + (v))
 
 void TomatoSprite::drawIdle(DisplayManager& display, int x, int y) {
-  // Chillin' pose
+  // Chillin pose
   int dx = display.width() / 2 - 42 + x;
   int dy = display.height() / 2 - 25 + y;
 
@@ -336,7 +336,7 @@ void TomatoSprite::drawSad(DisplayManager& display, int x, int y) {
   display.drawPixel(TX(47), TY(28), SSD1306_BLACK);
 }
 
-void TomatoSprite::drawWink(DisplayManager& display, int x, int y) {
+void TomatoSprite::drawBored(DisplayManager& display, int x, int y) {
   // Bored pose
   int dx = display.width() / 2 - 42 + x;
   int dy = display.height() / 2 - 25 + y;
@@ -440,3 +440,21 @@ void TomatoSprite::drawWink(DisplayManager& display, int x, int y) {
   display.drawPixel(TX(46), TY(28), SSD1306_BLACK);
 }
 
+void TomatoSprite::cycleIdle(DisplayManager& display, int x, int y) {
+  // Cycle through idle frames
+  static int frameCounter = 0;
+  int dx = display.width() / 2 - 42 + x;
+  int dy = display.height() / 2 - 25 + y;
+
+  if (frameCounter < 10) {
+    drawIdle(display, x, y);
+  } else if (frameCounter < 50) {
+    drawCheer(display, x, y);
+  } else if (frameCounter < 100) {
+    drawBored(display, x, y);
+  } else if (frameCounter < 300) {
+    frameCounter = -1; // Reset after sad frame
+  }
+
+  frameCounter++;  
+}

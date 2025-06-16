@@ -99,4 +99,5 @@ void Pong::draw(DisplayManager& display) {
   char buf[16];
   sprintf(buf, "%d - %d", playerScore, aiScore);
   display.drawText(buf, 52, 55);
+  //sprite.drawIdle(display, 0, 0);
 }

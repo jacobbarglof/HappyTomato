@@ -38,7 +38,7 @@ void PowerNap::draw(DisplayManager& display) {
   if (state == DONE) {
     sprite.drawCheer(display, 90, 0);
   } else if (state == NAPPING) {
-    sprite.drawWink(display, 90, 0);
+    sprite.drawBored(display, 90, 0);
   } else {
     sprite.drawIdle(display, 90, 0);
   }

@@ -73,13 +73,13 @@ void Breathing::update() {
 }
 
 void Breathing::draw(DisplayManager& display) {
-  if (state == COMPLETE) {
-    sprite.drawCheer(display, 90, 0);
-  } else if (state == RUNNING) {
-    sprite.drawWink(display, 90, 0);
-  } else {
-    sprite.drawIdle(display, 90, 0);
-  }
+  // if (state == COMPLETE) {
+  //   sprite.drawCheer(display, 0, 0);
+  // } else if (state == RUNNING) {
+  //   sprite.drawBored(display, 0, 0);
+  // } else {
+  //   sprite.drawIdle(display, 0, 0);
+  // }
 
   switch (state) {
     case SELECT_METHOD:

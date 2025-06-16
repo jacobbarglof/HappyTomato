@@ -24,10 +24,10 @@ void setup() {
 
   display.clear();
   display.drawText("Let's Focus!", 20, 0, 1);
+  display.drawText("HappyTomato", 28, 56, 1);
   sprite.drawCheer(display, 0, 0);
-  display.drawText("happytomato", 28, 56, 1);
   display.update();
-  delay(1500);
+  delay(2000);
 
   menu.begin();
 }

@@ -8,7 +8,7 @@
 void Buzzer::begin() {
   pinMode(buzzerPin, OUTPUT);
   digitalWrite(buzzerPin, LOW);
-  isMuted = false; // ensure starting with sound enabled
+  isMuted = true; // ensure starting with sound enabled
 }
 
 void Buzzer::click() {

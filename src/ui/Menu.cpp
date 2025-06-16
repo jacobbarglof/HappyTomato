@@ -28,7 +28,7 @@ void Menu::update(int scrollAmount) {
 }
 
 void Menu::draw(DisplayManager& display) {
-  sprite.drawIdle(display, 90, 0);
+  sprite.cycleIdle(display, 30, 0);
 
   const int lineHeight = 10;
   const int maxVisible = 5;
@@ -37,6 +37,7 @@ void Menu::draw(DisplayManager& display) {
   if (start < 0) start = 0;
   if (start > NUM_OPTIONS - maxVisible) start = NUM_OPTIONS - maxVisible;
   if (start < 0) start = 0;
+
 
   for (int i = 0; i < maxVisible; ++i) {
     int index = start + i;

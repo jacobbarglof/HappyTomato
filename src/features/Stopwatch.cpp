@@ -36,7 +36,7 @@ void Stopwatch::draw(DisplayManager& display) {
   display.drawText("Stopwatch", 30, 0);
 
   if (running) {
-    sprite.drawWink(display, 90, 0);
+    sprite.drawBored(display, 90, 0);
   } else {
     sprite.drawIdle(display, 90, 0);
   }

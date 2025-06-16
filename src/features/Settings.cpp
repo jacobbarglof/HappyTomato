@@ -8,7 +8,7 @@
 Settings::Settings() {
   mode = MENU;
   selection = 0;
-  muted = false;
+  muted = true;
   brightness = 255;
   scrollLine = 0;
 }
@@ -68,7 +68,7 @@ void Settings::update() {
 
 void Settings::draw(DisplayManager& display) {
   if (mode == INSTRUCTIONS) {
-    sprite.drawWink(display, 90, 0);
+    sprite.drawBored(display, 90, 0);
   } else {
     sprite.drawIdle(display, 90, 0);
   }
@@ -92,10 +92,10 @@ void Settings::drawMenu(DisplayManager& display) {
 }
 
 void Settings::drawBrightness(DisplayManager& display) {
-  display.drawText("Brightness", 20, 0);
+  display.drawText("Brightness", 30, 0);
   char buf[16];
   sprintf(buf, "%d / 255", brightness);
-  display.drawText(buf, 40, 30, 2);
+  display.drawText(buf, 10, 30, 2);
   display.drawText("Click to save", 20, 55);
 }
 

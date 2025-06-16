@@ -135,7 +135,7 @@ void Pomodoro::draw(DisplayManager& display) {
       sprite.drawSad(display, 90, 0);
       break;
     case RUNNING_BREAK:
-      sprite.drawWink(display, 90, 0);
+      sprite.drawBored(display, 90, 0);
       break;
     default:
       sprite.drawIdle(display, 90, 0);
